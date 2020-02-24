@@ -11,8 +11,7 @@ import { Observable, throwError } from 'rxjs';
 })
 
 export class AppComponent extends CommonComponent implements OnInit {
-  nombre = 'Laura';
-  myVar = 'Esto es Mario'
+
   users: User[] = [];
   peliculas: any[] = [];
 
@@ -38,17 +37,8 @@ export class AppComponent extends CommonComponent implements OnInit {
     })
   }
 
-  suma(a: number, b: number):number {
-    if(a < 0) return 0
-    return a + b
-  }
 
-  obtenerPaises(excluir?){
-    if(excluir === 'España') return [ 'Italia', 'Francia']
-    if(excluir === 'Italia') return [ 'España', 'Francia']
-    if(excluir === 'Francia') return [ 'España', 'Italia']
-    return [ 'España', 'Italia', 'Francia' ]
-  }
+
 
   getMessage(){
     return 'Hola'
@@ -73,9 +63,7 @@ export class AppComponent extends CommonComponent implements OnInit {
     return this.multiplicar(2)
   }
 
-  comprobarArray(array){
-    return (array.length <= 0) ? 'error' : array.length
-  }
+
 
   comprobarPrecio(n){
     switch (n) {

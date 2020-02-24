@@ -12,6 +12,8 @@ describe('UsersService', () => {
   // HttpTestingController se use para similar solicitudes
   let httpMock: HttpTestingController
 
+  let service: UsersService
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -22,6 +24,10 @@ describe('UsersService', () => {
     // Tener acceso a las variables limpias antes de it();
     injector = getTestBed();
     httpMock = injector.get(HttpTestingController)
+
+     // Instanciamos el servicio
+    service = TestBed.get(UsersService)
+
   })
 
   afterEach(() => {
@@ -31,15 +37,10 @@ describe('UsersService', () => {
 
   it('Debe ser creado el servicio', () => {
 
-    // Instanciamos el servicio
-    const service: UsersService = TestBed.get(UsersService);
     expect(service).toBeTruthy();
   });
 
   it('Debe retornar un Observable<User>', () => {
-
-    // Instanciamos el servicio
-    const service:UsersService = TestBed.get(UsersService)
 
     // Objeto simulad de la respuesta
     // const service:UsersService = new UserService()
@@ -88,7 +89,7 @@ describe('UsersService', () => {
 
     // Nos subscibimos al método getAll()
     service.getAll().subscribe((users) => {
-      expect(users.length).toBe(2);
+      expect(users.length).toBeGreaterThan(0);
       expect(users).toEqual(mockUser);
       expect(users[0].login).toBeDefined()
     })
@@ -105,9 +106,6 @@ describe('UsersService', () => {
   })
 
   it('Debe retornar un Array con España', () => {
-
-    // Instanciamos el servicio
-    const service:UsersService = TestBed.get(UsersService)
 
     // Objeto simuladod de la respuesta
     // const service:UsersService = new UserService()
@@ -259,7 +257,6 @@ describe('UsersService', () => {
 
     // FLUSH proporciona valores ficticios a nuestras solicitudes
     req.flush(mockPaisUnited);
-
 
   })
 });

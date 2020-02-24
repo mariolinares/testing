@@ -62,18 +62,6 @@ describe('AppComponent', () => {
   });
 
 
-  // Probar que contiene
-  it('Probar que contiene Mario', () => {
-    const myVar = appComp.myVar
-    expect(myVar).toContain('Mario')
-  })
-
-  // Probar que es igual
-  it('Probar que es igual a Laura', () => {
-    const nombre = appComp.nombre
-    expect(nombre).toEqual('Laura');
-  })
-
   // Probar que es retorna TRUE
   it('Comprobar que retorna TRUE', ( ) => {
     const isTrue = appComp.par(10);
@@ -138,40 +126,6 @@ describe('AppComponent', () => {
     expect(users).toHaveBeenCalled();
   })
 
-  it('funcion suma' , () => {
-    const suma = appComp.suma(4,5)
-    expect(suma).toBe(9)
-  })
-
-  it('funcion suma' , () => {
-    const suma = appComp.suma(-1,5)
-    expect(suma).toBe(0)
-  })
-
-  it('Obtener listado de paises disponibles si no hay ninguna exclusion', () => {
-    const paises = appComp.obtenerPaises();
-    expect(paises).toContain('España')
-    expect(paises).toContain('Italia')
-    expect(paises).toContain('Francia')
-  })
-
-  it('Obtener listado de paises disponibles si excluimos a españa', () => {
-    const paises = appComp.obtenerPaises('España');
-    expect(paises).toContain('Italia')
-    expect(paises).toContain('Francia')
-  })
-
-  it('Obtener listado de paises disponibles si excluimos a Italia', () => {
-    const paises = appComp.obtenerPaises('Italia');
-    expect(paises).toContain('España')
-    expect(paises).toContain('Francia')
-  })
-
-  it('Obtener listado de paises disponibles si excluimos a Francia', () => {
-    const paises = appComp.obtenerPaises('Francia');
-    expect(paises).toContain('España')
-    expect(paises).toContain('Italia')
-  })
 
   it('Debe llamar al metodo getMessage y obtener respuesta hola', () => {
     // const users = spyOn(appComp, 'getMessage')
@@ -201,11 +155,6 @@ describe('AppComponent', () => {
     expect(data).toContain('Linares')
   })
 
-/*   it('getApellido() debe retornar Sanchez si no recibe Linares', () => {
-    const data = appComp.getApellido('Orejas');
-    expect(data).toContain('Sanchez')
-  }) */
-
   it('El método multiplicar se inicializa el onInit', () => {
     const data = spyOn(appComp, 'multiplicar');
     appComp.ngOnInit()
@@ -227,20 +176,6 @@ describe('AppComponent', () => {
     const spy = spyOn(appComp, 'multiplicar').and.returnValue(20)
     appComp.getApellido(1);
     expect(spy).toHaveBeenCalled()
-  })
-
-
-  it('Comprobar que si enviamos un array vacio retorna un mensaje de error', () => {
-    const array = []
-    const f = appComp.comprobarArray(array)
-    expect(f).toEqual('error')
-    //expect(array.length).toBeGreaterThan(1)
-  })
-
-  it('Comprobar que si enviamos un array a la funcion comprobarArray retorna el número de elementos', () => {
-    const array = [1,2,3]
-    const f = appComp.comprobarArray(array)
-    expect(f).toEqual(3)
   })
 
   it('El método comprobarSwitch se inicializa en el OnInit', () => {
